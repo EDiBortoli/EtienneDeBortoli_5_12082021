@@ -1,3 +1,22 @@
-.listCard {
+/*.listCard {
     display:flex;
+}*/
+header {
+    top: 0;
+}
+
+.listCard{
+    min-height: 500px;
+}
+
+.card {
+    max-width: 20rem;
+    justify-content: center;
+}
+.card img {
+    height: 65%;
+}
+
+footer a {
+    color:white;
 }
