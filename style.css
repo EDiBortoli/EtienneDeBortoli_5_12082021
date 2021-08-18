@@ -9,8 +9,12 @@ header {
     min-height: 500px;
 }
 
+.listCard .row {
+    justify-content: center;
+}
+
 .infoProduct {
-    
+
 }
 
 .card {
