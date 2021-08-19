@@ -25,6 +25,10 @@ header {
     height: 65%;
 }
 
+table tbody tr td img{
+    width: 100px !important;
+}
+
 footer a {
     color:white;
 }
