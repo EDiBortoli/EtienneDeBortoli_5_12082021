@@ -15,7 +15,7 @@ fetch("http://localhost:3000/api/teddies/"+id)
         let options = "";
 
         for (let color of infos.colors){
-        options = options + "<option>"+ color +"</option>";
+        options = options + "<option value=\""+ color +"\">"+ color +"</option>";
         }
 
         newInfos.innerHTML = "<h1 class=\"text-center mt-5\">"+ infos.name +"</h1>\
@@ -31,17 +31,17 @@ fetch("http://localhost:3000/api/teddies/"+id)
                 <form class=\"my-0 pb-4 col-md-6 col-lg-5\">\
                 <fieldset>\
                 <div class=\"form-group\">\
-                <label for=\"selectColor\" class=\"form-label mt-4\">Choisissez votre couleur :</label>\
-                <select class=\"form-select\" id=\"selectColor\" onchange=\"choixCouleur()\"><option>Sélectionnez une couleur</option>" + options +
+                <label for=\"selectColor\" class=\"form-label mt-4\">Couleur :</label>\
+                <select class=\"form-select couleur\" id=\"selectColor\" onchange=\"\"><option>Sélectionnez une couleur</option>" + options +
                 "</select>\
                 </div>\
                 <div class=\"form-group\">\
-                <label for=\"quantite\" class=\"form-label mt-4\">Quantité</label>\
+                <label for=\"quantite\" class=\"form-label mt-4\">Quantité :</label>\
                 <input type=\"number\" class=\"form-control\" id=\"quantite\" placeholder=\"Choisissez combien vous en voulez\">\
                 </div>\
                 </fieldset>\
                 </form>\
-                <a class=\"lienPanier btn btn-info\" href=\"panier.html\">Ajouter au panier</a>\
+                <a class=\"lienPanier btn btn-info\" id=\"ajouterAuPanier\" href=\"panier.html\">Ajouter au panier</a>\
                 </div>\
                 </div>\
                 </div>\
@@ -52,31 +52,46 @@ fetch("http://localhost:3000/api/teddies/"+id)
         let infoOurs = document.getElementById('infoOurs');
         // on rajoute le nouvel élément créé à la div infoOurs
         infoOurs.appendChild(newInfos);
+    
 
-//------------------ choix de la couleur ---------------------------------------
-
-        //let choixCouleur = document.getElementById("selectColor");
-
-        let coul = document.getElementById("selectColor").value;
-        //    console.log(coul);
-        
+//------------------ choix des options ---------------------------------------
 
         let choixProduit = {
             nomProduit : infos.name,
             imageProduit : infos.imageUrl,
-            couleurProduit : coul.value,
+            couleurProduit : "",
             prixProduit : infos.price,
-            quantiteProduit : 2
-        }
+            quantiteProduit : ""
+        };
+
+        let choixCouleur = document.getElementById("selectColor");
+
+        choixCouleur.addEventListener('change', (event) => {
+        choixProduit.couleurProduit = choixCouleur.options[choixCouleur.selectedIndex].value;
         console.log(choixProduit);
-    });
+        });
+
+        let quantiteProduit = document.getElementById("quantite");
+        
+        quantiteProduit.addEventListener('change', (event) => {
+            choixProduit.quantiteProduit = quantiteProduit.value;
+            console.log(choixProduit);
+            });
 
 // ---------------------------------- LOCAL STORAGE ----------------------------------------
 
-    let monPanier = localStorage
 
-    function ajouterAuPanier() {
-        localStorage.setItem("quantite", document.getElementById("quantite").value);
-    };
+    let monPanier = JSON.parse(localStorage.getItem("monPanier"));
+    if (! monPanier){
+        monPanier = [];
+    }
+    //monPanier.push(choixProduit);
+    let ajoutPanier = document.getElementById("ajouterAuPanier");
+    ajoutPanier.addEventListener('click', (e) =>{
+        monPanier.push(choixProduit);
+        localStorage.setItem("monPanier", JSON.stringify(monPanier));
+    })
+
+    //localStorage.setItem("produit",JSON.stringify(monPanier));
  
-    console.log(localStorage);
+    });

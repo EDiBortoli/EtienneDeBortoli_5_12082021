@@ -1,4 +1,4 @@
-let panier = localStorage.getItem("monPanier");
-let tab = [];
+let panier = JSON.parse(localStorage.getItem("monPanier"));
 
-console.log("monPanier");
+console.log(panier);
+
