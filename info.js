@@ -35,6 +35,10 @@ fetch("http://localhost:3000/api/teddies/"+id)
                 <select class=\"form-select\" id=\"selectColor\" onchange=\"choixCouleur()\"><option>Sélectionnez une couleur</option>" + options +
                 "</select>\
                 </div>\
+                <div class=\"form-group\">\
+                <label for=\"quantite\" class=\"form-label mt-4\">Quantité</label>\
+                <input type=\"number\" class=\"form-control\" id=\"quantite\" placeholder=\"Choisissez combien vous en voulez\">\
+                </div>\
                 </fieldset>\
                 </form>\
                 <a class=\"lienPanier btn btn-info\" href=\"panier.html\">Ajouter au panier</a>\
@@ -53,7 +57,7 @@ fetch("http://localhost:3000/api/teddies/"+id)
 
         //let choixCouleur = document.getElementById("selectColor");
 
-        //let coul = document.getElementById("selectColor").value;
+        let coul = document.getElementById("selectColor").value;
         //    console.log(coul);
         
 
@@ -64,16 +68,15 @@ fetch("http://localhost:3000/api/teddies/"+id)
             prixProduit : infos.price,
             quantiteProduit : 2
         }
-        //console.log(choixProduit);
+        console.log(choixProduit);
     });
 
 // ---------------------------------- LOCAL STORAGE ----------------------------------------
 
     let monPanier = localStorage
 
-    function ajouterAuPanier {
-        localStorage.setItem(choixProduit);
+    function ajouterAuPanier() {
+        localStorage.setItem("quantite", document.getElementById("quantite").value);
     };
-
+ 
     console.log(localStorage);
-    console.log(choixProduit);
