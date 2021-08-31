@@ -1,7 +1,3 @@
-// commentaires
-//let h4Ours = document.getElementById('ours1');
-//h4Ours.innerHTML = "Mon Ours Norbert";
-
 //récupération des données
 fetch("http://localhost:3000/api/teddies")
 //On vérifie si on a bien récupéré les données
@@ -27,13 +23,13 @@ fetch("http://localhost:3000/api/teddies")
                     <div class=\"card-body\">\
                     <h4 id=\"ours1\" class=\"card-title\">"+ infos.name +"</h4>\
                     <p class=\"card-text\">"+ infos.description +"</p><p class=\"card-text\">Prix : "+ infos.price +" euros</p>\
-                    <a href=\"info.html?id=ours1\" class=\"stretched-link\"></a>\
+                    <a href=\"info.html?id="+infos._id+"\" class=\"stretched-link\"></a>\
                     </div>";
         // On récupère la div avec l'id ligneOurs (celle dans laquelle on doit mettre les "cartes" d'ours)
         let ligneOurs = document.getElementById('ligneOurs');
         // on rajoute le nouvel élément créé à la div ligneOurs
         ligneOurs.appendChild(newElt);
-     }
+    }
   })
      // en cas d'erreur
   .catch(function(err) {
