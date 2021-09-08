@@ -61,7 +61,8 @@ fetch("http://localhost:3000/api/teddies/"+id)
             imageProduit : infos.imageUrl,
             couleurProduit : "",
             prixProduit : infos.price,
-            quantiteProduit : ""
+            quantiteProduit : "",
+            productId : id
         };
 
         let choixCouleur = document.getElementById("selectColor");
@@ -81,17 +82,15 @@ fetch("http://localhost:3000/api/teddies/"+id)
 // ---------------------------------- LOCAL STORAGE ----------------------------------------
 
 
-    let monPanier = JSON.parse(localStorage.getItem("monPanier"));
-    if (! monPanier){
-        monPanier = [];
-    }
-    //monPanier.push(choixProduit);
-    let ajoutPanier = document.getElementById("ajouterAuPanier");
-    ajoutPanier.addEventListener('click', (e) =>{
-        monPanier.push(choixProduit);
-        localStorage.setItem("monPanier", JSON.stringify(monPanier));
-    })
-
-    //localStorage.setItem("produit",JSON.stringify(monPanier));
+        let monPanier = JSON.parse(localStorage.getItem("monPanier"));
+        if (! monPanier){
+            monPanier = [];
+        }
+        //monPanier.push(choixProduit);
+        let ajoutPanier = document.getElementById("ajouterAuPanier");
+        ajoutPanier.addEventListener('click', (e) =>{
+            monPanier.push(choixProduit);
+            localStorage.setItem("monPanier", JSON.stringify(monPanier));
+        })
  
     });

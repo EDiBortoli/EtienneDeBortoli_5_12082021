@@ -9,7 +9,8 @@ let panier = JSON.parse(localStorage.getItem("monPanier"));
 // Visualisation du contenu de "panier"
 console.log(panier);
 
-    let tableRow = "";
+// Création variable ligne du tableau des produits du panier
+  let tableRow = "";
 
   for (let ligne of panier) {
 
@@ -31,7 +32,6 @@ console.log(panier);
       //On crée un élément div
       let newLigne = document.createElement("div");
       //On ajoute des éléments HTML à la div
-      //Ici ajouter les éléments tirés des données de chaque ours : nom, url de l'image, prix, description 
       newLigne.innerHTML = "<table class=\"table table-hover\">\
       <thead>\
         <tr>\
@@ -49,10 +49,59 @@ console.log(panier);
       lignePanier.appendChild(newLigne);
   //};
 
+  let envoiPanier = document.getElementById("confirmezAchat");
+  envoiPanier.addEventListener('click', (e) =>{
+      
+    let nomForm = document.getElementById("nom").value;
+    let prenomForm = document.getElementById("prenom").value;
+    let emailForm = document.getElementById("email").value;
+    let adresseLivraisonForm = document.getElementById("adresseLivraison").value;
+    let villeForm = document.getElementById("ville").value;
 
-//nomProduit : infos.name,
-  //          imageProduit : infos.imageUrl,
-    //        couleurProduit : "",
-      //      prixProduit : infos.price,
-        //    quantiteProduit : ""
+// validation des données à faire, voir cours valider les données...
 
+    let contact = {
+      firstName : nomForm,
+      lastName : prenomForm,
+      email : emailForm,
+      address : adresseLivraisonForm,
+      city : villeForm
+    }
+
+    let productList = [];
+    for(let ours of panier){
+      productList.push(ours.productId);
+    }
+
+    console.log(JSON.stringify(contact));
+    let jsonBody = {
+      contact : contact,
+      products : productList
+    }
+
+    console.log(JSON.stringify(jsonBody));
+
+    fetch("http://localhost:3000/api/teddies/order", {
+	    method: "POST",
+	    headers: { 
+      'Accept': 'application/json', 
+      'Content-Type': 'application/json' 
+      },
+	    body: JSON.stringify(jsonBody)
+    })
+    .then(function(res) {
+      if (res.ok) {
+        return res.json();
+      }
+    })
+
+    .then(function(value) {
+      console.log(value);
+      // creer un nouveau storage avec le contenu de value
+      // à recuperer dans la page confirmation, toutes les infos necessaires pour faire un message de confirmation
+    })
+    .catch(function(err) {
+      // Une erreur est survenue
+      console.log(err);
+  });
+  })
