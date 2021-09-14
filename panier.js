@@ -97,7 +97,20 @@ console.log(panier);
 
     .then(function(value) {
       console.log(value);
-      // creer un nouveau storage avec le contenu de value
+      // creation d'un nouveau storage avec le contenu de value
+
+      let maConfirmation = JSON.parse(localStorage.getItem("mesAchats"));
+      if (! maConfirmation){
+        maConfirmation = [];
+      }
+      let confirmationAchats = document.getElementById("confirmezAchat");
+      confirmationAchats.addEventListener('click', (e) =>{
+        maConfirmation.push(value);
+          localStorage.setItem("mesAchats", JSON.stringify(maConfirmation));
+      }
+      console.log(localStorage);
+      )
+
       // à recuperer dans la page confirmation, toutes les infos necessaires pour faire un message de confirmation
     })
     .catch(function(err) {
