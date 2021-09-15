@@ -119,33 +119,28 @@
           <!-- FORMULAIRE -->
 
           <div class="form col pt-3">
-            <form>
+            <form name="contactForm" method="post">
               <fieldset>
                 <legend>Entrez vos coordonnées</legend>
                 <div class="form-group">
                   <label for="email" class="form-label mt-4">Adresse email</label>
-                  <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email@exemple.fr">
-                  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="email@exemple.fr">
                 </div>
                 <div class="form-group">
                   <label for="nom" class="form-label mt-4">Nom</label>
-                  <input type="text" class="form-control" id="nom" placeholder="nom">
+                  <input type="text" class="form-control" id="nom" name="nom" placeholder="nom">
                 </div>
                 <div class="form-group">
                   <label for="prenom" class="form-label mt-4">Prénom</label>
-                  <input type="text" class="form-control" id="prenom" placeholder="prenom">
+                  <input type="text" class="form-control" id="prenom" name="prenom" placeholder="prenom">
                 </div>
                 <div class="form-group">
                   <label for="adresseLivraison" class="form-label mt-4">Adresse de livraison</label>
-                  <input type="text" class="form-control" id="adresseLivraison" placeholder="1 rue de la paix">
-                </div>
-                <div class="form-group">
-                  <label for="codePostal" class="form-label mt-4">Code postal</label>
-                  <input type="number" class="form-control" id="codePostal" placeholder="75000">
+                  <input type="text" class="form-control" id="adresseLivraison" name="adresse" placeholder="1 rue de la paix">
                 </div>
                 <div class="form-group">
                   <label for="ville" class="form-label mt-4">Ville</label>
-                  <input type="text" class="form-control" id="ville" placeholder="Paris">
+                  <input type="text" class="form-control" id="ville" name="ville" placeholder="Paris">
                 </div>
               </fieldset>
             </form>
