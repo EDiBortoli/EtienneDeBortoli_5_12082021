@@ -156,5 +156,10 @@ envoiPanier.addEventListener('click', (e) =>{
       // Une erreur est survenue
       console.log(err);
     })
+
+    // création d'un attribut href dans la balise a pour accéder à la page de confirmation
+    let lien = document.getElementById("confirmezAchat");
+
+    lien.setAttribute("href", "confirmation.html");
   }
 });
