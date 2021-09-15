@@ -2,35 +2,63 @@
 
 let achats = JSON.parse(localStorage.getItem("mesAchats"));
 
-console.log("mesAchats");
+console.log(achats);
 
-// Création variable ligne du tableau des produits du panier
+let mailConfirmation = document.createElement("div");
+mailConfirmation.innerHTML = "<div class=\"text-center pb-2\">\
+<strong>Bravo !!</strong>\
+</div>\
+<div class=\"text-center pb-2\">\
+Vous avez finalisé votre commande avec succès. <br> ;-) <br>Une confirmation vous a été envoyé à l'adresse email : "+ achats.contact.email +"\
+</div>\
+<div class=\"text-center pb-2\">\
+<a href=\"#\" class=\"alert-link\">imprimer ma facture</a>.\
+</div>";
+
+let success = document.getElementById('success');
+success.appendChild(mailConfirmation);
+
+// -----
+let infosPerso = document.createElement("div");
+infosPerso.innerHTML = "<div>Nom : " + achats.contact.lastName +"</div>\
+<div>Prénom : " + achats.contact.firstName +"</div>\
+<div>Adresse : " + achats.contact.address +"</div>\
+<div>Ville : " + achats.contact.city +"</div>";
+
+let recapInfosPerso = document.getElementById('infosPerso');
+recapInfosPerso.appendChild(infosPerso);
+
+
+let articles = JSON.parse(localStorage.getItem("monPanier"));
+// Création variable ligne du tableau des produits commandés
+
+console.log(articles);
 let tableRow = "";
+let prixTotal = "";
 
-for (let infos of achats) {
+for (let infos of articles) {
+    
+    // ----
+    tableRow = tableRow + "<div class=\"border row ligneTab\">\
+    <div class=\"col\">"+ infos.nomProduit +"</div>\
+    <div class=\"col\">"+ infos.couleurProduit +"</div>\
+    <div class=\"col\">"+ infos.quantiteProduit +"</div>\
+    <div class=\"col\">"+ infos.prixProduit +"</div>\
+    </div>";
 
-    let mailConfirmation = document.createElement("div");
-    mailConfirmation.innerHTML = "<div class=\"text-center pb-2\">\
-    <strong>Bravo !!</strong>\
-  </div>\
-  <div class=\"text-center pb-2\">\
-    Vous avez finalisé votre commande avec succès. <br> ;-) <br>Une confirmation vous a été envoyé à l'adresse email : "+ infos.email +"\
-  </div>\
-  <div class=\"text-center pb-2\">\
-    <a href=\"#\" class=\"alert-link\">imprimer ma facture</a>.\
-  </div>";
-
-    let success = document.getElementById('success');
-    success.appendChild(mailConfirmation);
-
-    tableRow = tableRow + "";
-};
     //On crée un élément div
     let newLigne = document.createElement("div");
     //On ajoute des éléments HTML à la div
-    newLigne.innerHTML = "";
+    newLigne.innerHTML = ""+tableRow+"";
 
  
-    let ligneAchats = document.getElementById('recap');
-    ligneAchats.appendChild(newLigne);
-//};
+    let ligneArticles = document.getElementById("recap");
+    ligneArticles.appendChild(newLigne);
+
+    prixTotal = prixTotal += infos.prixProduit;
+
+    let newPrice = document.createElement("div");
+    newPrice.innerHTML = ""+ prixTotal +"€";
+    let Prix = document.getElementById("prixTotal");
+    Prix.appendChild(newPrice);
+};

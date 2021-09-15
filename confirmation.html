@@ -71,7 +71,7 @@
         <div class="row mb-4">
           <div class="col"></div>
           <div id="success" class="col-5 alert alert-dismissible alert-success">
-            <div class="text-center pb-2">
+            <!--<div class="text-center pb-2">
               <strong>Bravo !!</strong>
             </div> 
             <div class="text-center pb-2">
@@ -79,7 +79,7 @@
             </div>
             <div class="text-center pb-2">
               <a href="#" class="alert-link">imprimer ma facture</a>.
-            </div>
+            </div>-->
           </div>
           <div class="col"></div>
         </div>
@@ -87,40 +87,45 @@
           <div class="pb-3">
             <strong>Informations personnelles :</strong>
           </div>
-          <div>
-            Nom :
-          </div>
-          <div>
-            Prénom :
-          </div>
-          <div>
-            Adresse :
-          </div>
-          <div>
-            Ville :
-          </div>
+          <div id="infosPerso">
+            <!--<div>
+              Nom :
+            </div>
+            <div>
+              Prénom :
+            </div>
+            <div>
+              Adresse :
+            </div>
+            <div>
+              Ville :
+            </div>
+          </div>-->
         </div>
         <div class="mt-4">
           <div class="pb-3">
             <strong>Détails de vos achats :</strong>
           </div>
-          <div class="border bg-light row ligneTab">
-            <div class="col">
-              nom nounours
+          <div id="tableauRecapAchats">
+            <div class="border bg-light row ligneTab">
+              <div class="col">
+                Article
+              </div>
+              <div class="col">
+                Couleur
+              </div>
+              <div class="col">
+                Quantité
+              </div>
+              <div class="col">
+                Prix
+              </div>
             </div>
-            <div class="col">
-              couleur
-            </div>
-            <div class="col">
-              quantité
-            </div>
-            <div class="col">
-              Prix
-            </div>
+            <div id="recap"></div>
           </div>
         </div>
         <div class="mt-5">
-          <div class="pb-3 text-center">
+          <div class="pb-3 text-center" id="prixTotal">
             <strong>Prix total :</strong>
           </div>
         </div>

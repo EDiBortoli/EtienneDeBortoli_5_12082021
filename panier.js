@@ -125,7 +125,8 @@ envoiPanier.addEventListener('click', (e) =>{
     console.log(JSON.stringify(contact));
     let jsonBody = {
       contact : contact,
-      products : productList
+      products : productList,
+      detail : panier
     }
 
     console.log(JSON.stringify(jsonBody));
@@ -149,7 +150,7 @@ envoiPanier.addEventListener('click', (e) =>{
       // creation d'un nouveau storage avec le contenu de value
 
       localStorage.removeItem("mesAchats");
-      localStorage.setItem("mesAchats",value);
+      localStorage.setItem("mesAchats", JSON.stringify(value));
       // à recuperer dans la page confirmation, toutes les infos necessaires pour faire un message de confirmation
     })
     .catch(function(err) {

@@ -86,7 +86,7 @@ fetch("http://localhost:3000/api/teddies/"+id)
         if (! monPanier){
             monPanier = [];
         }
-        //monPanier.push(choixProduit);
+
         let ajoutPanier = document.getElementById("ajouterAuPanier");
         ajoutPanier.addEventListener('click', (e) =>{
             monPanier.push(choixProduit);
