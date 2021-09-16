@@ -45,20 +45,22 @@ for (let infos of articles) {
     <div class=\"col\">"+ infos.quantiteProduit +"</div>\
     <div class=\"col\">"+ infos.prixProduit +"</div>\
     </div>";
-
-    //On crée un élément div
-    let newLigne = document.createElement("div");
-    //On ajoute des éléments HTML à la div
-    newLigne.innerHTML = ""+tableRow+"";
-
- 
-    let ligneArticles = document.getElementById("recap");
-    ligneArticles.appendChild(newLigne);
-
-    prixTotal = prixTotal += infos.prixProduit;
-
-    let newPrice = document.createElement("div");
-    newPrice.innerHTML = ""+ prixTotal +"€";
-    let Prix = document.getElementById("prixTotal");
-    Prix.appendChild(newPrice);
 };
+
+//On crée un élément div
+let newLigne = document.createElement("div");
+//On ajoute des éléments HTML à la div
+newLigne.innerHTML = ""+tableRow+"";
+
+
+let ligneArticles = document.getElementById("recap");
+ligneArticles.appendChild(newLigne);
+
+// ----- Calcul du prix total ------
+
+prixTotal = prixTotal += infos.prixProduit;
+
+let newPrice = document.createElement("div");
+newPrice.innerHTML = ""+ prixTotal +"€";
+let Prix = document.getElementById("prixTotal");
+Prix.appendChild(newPrice);
