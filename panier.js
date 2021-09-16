@@ -48,6 +48,12 @@ let lignePanier = document.getElementById('recap');
 // on rajoute le nouvel élément créé à la div lignePanier
 lignePanier.appendChild(newLigne);
 
+
+//let nameOK = document.getElementById("name");
+        //nameOK.addEventListener('change', (event) => {
+         // nameOK.classList.add("is-valid");
+          //});
+
 let envoiPanier = document.getElementById("confirmezAchat");
 envoiPanier.addEventListener('click', (e) =>{
   // Validation du formulaire avec une fonction validation()
@@ -58,21 +64,21 @@ envoiPanier.addEventListener('click', (e) =>{
       var email = document.forms["contactForm"]["email"];     
       var adresse = document.forms["contactForm"]["adresse"];  
       var ville = document.forms["contactForm"]["ville"]; 
-      let re = new RegExp("^[A-Za-z][0-9A-Za-z-_\.]+@[0-9A-Za-z-_\.]+\.[A-Za-z]{2,}$","g");
-      let testEmail = !re.test(email.value);
+      let regMail = new RegExp("^[A-Za-z][0-9A-Za-z-_\.]+@[0-9A-Za-z-_\.]+\.[A-Za-z]{2,}$","g");
+      let testEmail = !regMail.test(email.value);
 
       if (nom.value == "")                                  
       { 
           alert("Mettez votre nom."); 
           nom.focus(); 
           return false; 
-      }  
+      }
       if (prenom.value == "")                                  
       { 
           alert("Mettez votre prénom."); 
           prenom.focus(); 
           return false; 
-      }    
+      }  
       if (adresse.value == "")                               
       { 
           alert("Mettez votre adresse."); 
@@ -98,6 +104,7 @@ envoiPanier.addEventListener('click', (e) =>{
           return false; 
       } 
       return true; 
+      
   }
   // Appel de la fonction validation si true
   if (validation()){
