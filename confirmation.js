@@ -38,7 +38,7 @@ let prixTotal = "";
 
 for (let infos of articles) {
     
-    // ----
+    // ---- Creation d'une ligne dans le tableau recapitulatif des achats
     tableRow = tableRow + "<div class=\"border row ligneTab\">\
     <div class=\"col\">"+ infos.nomProduit +"</div>\
     <div class=\"col\">"+ infos.couleurProduit +"</div>\
@@ -46,6 +46,7 @@ for (let infos of articles) {
     <div class=\"col\">"+ infos.prixProduit +"</div>\
     </div>";
 
+    // Calcul du prix total des achats
     prixTotal = Number(prixTotal) + Number(infos.prixProduit);
 };
 
