@@ -1,6 +1,6 @@
 // récupération du contenu du local storage et stockage dans variable mesAchats
 
-let achats = JSON.parse(localStorage.getItem("mesAchats"));
+let achats = JSON.parse(localStorage.getItem("mesAchats")); // a ajouter au plan de test
 
 console.log(achats);
 
@@ -12,7 +12,7 @@ mailConfirmation.innerHTML = "<div class=\"text-center pb-2\">\
 Vous avez finalisé votre commande avec succès. <br> ;-) <br>Une confirmation vous a été envoyé à l'adresse email : "+ achats.contact.email +"\
 </div>\
 <div class=\"text-center pb-2\">\
-<a href=\"#\" class=\"alert-link\">imprimer ma facture</a>.\
+<a href=\"#\" onclick=\"window.print();return false;\" class=\"alert-link\">imprimer ma facture</a>.\
 </div>";
 
 let success = document.getElementById('success');
@@ -29,7 +29,7 @@ let recapInfosPerso = document.getElementById('infosPerso');
 recapInfosPerso.appendChild(infosPerso);
 
 
-let articles = JSON.parse(localStorage.getItem("monPanier"));
+let articles = JSON.parse(localStorage.getItem("monPanier")); // a ajouter au plan de test
 // Création variable ligne du tableau des produits commandés
 
 console.log(articles);
@@ -57,7 +57,7 @@ newLigne.innerHTML = ""+tableRow+"";
 
 
 let ligneArticles = document.getElementById("recap");
-ligneArticles.appendChild(newLigne);
+ligneArticles.appendChild(newLigne); // a ajouter au plan de test
 
 // ----- Calcul du prix total ------
 
@@ -67,4 +67,5 @@ newPrice.innerHTML = ""+ prixTotal +" €";
 let Prix = document.getElementById("prixTotal");
 Prix.appendChild(newPrice);
 
-localStorage.removeItem("monPanier");
+localStorage.removeItem("monPanier"); // a ajouter au plan de test, verifier que le panier est bien supprimer lorsqu'on passe à la page de confirmation d'achat
+

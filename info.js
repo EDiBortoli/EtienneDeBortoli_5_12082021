@@ -1,6 +1,7 @@
 let url = new URL(window.location);
 let params = url.searchParams;
 let id = params.get('id');
+console.log(id); // à ajouter au plan de test
 
 fetch("http://localhost:3000/api/teddies/"+id) 
 
@@ -13,7 +14,7 @@ fetch("http://localhost:3000/api/teddies/"+id)
 .then(function(infos) {
     let newInfos = document.createElement("div");
     let options = "";
-
+    console.log(infos); // a ajouter au test
     for (let color of infos.colors){
     options = options + "<option value=\""+ color +"\">"+ color +"</option>";
     }
@@ -47,7 +48,7 @@ fetch("http://localhost:3000/api/teddies/"+id)
             </div>\
             </div>\
             </div>"; 
-    
+    // dans la page verifier que l'afgfichage correspond bien aux données récolteé
 
     let infoOurs = document.getElementById('infoOurs');
     // on rajoute le nouvel élément créé à la div infoOurs
@@ -89,9 +90,17 @@ fetch("http://localhost:3000/api/teddies/"+id)
 
     let ajoutPanier = document.getElementById("ajouterAuPanier");
     ajoutPanier.addEventListener('click', (e) =>{
+        function validation(){
+         // déclarer la fonction validation
+        }
+
+        if validation(){ 
         monPanier.push(choixProduit);
         localStorage.setItem("monPanier", JSON.stringify(monPanier));
+    }
     })
+
+    // à ajouter pour savoir si on a bien récupéré dans le local storage, on stocke bien les infos de l'ours, et vérifier que les différents ours que l'on a séléectionné s'accumulent bien
 
 })
 

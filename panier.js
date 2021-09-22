@@ -7,7 +7,7 @@ let panier = JSON.parse(localStorage.getItem("monPanier"));
     }
 
 // Visualisation du contenu de "panier"
-console.log(panier);
+console.log(panier); // a ajouter au plan de test
 
 // Création variable ligne du tableau des produits du panier
 let tableRow = "";
@@ -46,7 +46,8 @@ newLigne.innerHTML = "<table class=\"table table-hover\">\
 // On récupère la div avec l'id ligneOurs (celle dans laquelle on doit mettre les "cartes" d'ours)
 let lignePanier = document.getElementById('recap');
 // on rajoute le nouvel élément créé à la div lignePanier
-lignePanier.appendChild(newLigne);
+lignePanier.appendChild(newLigne); 
+// a ajouter au plan de test, vérifier à l'affichage
 
 // TEST Bord du champs de formulaire coloré si bien rempli ou pas bien rempli
 //let nameOK = document.getElementById("name");
@@ -60,7 +61,6 @@ viderPanier.addEventListener('click', (e) => {
   localStorage.clear();
   document.location.reload();
 });
-
 
 let envoiPanier = document.getElementById("confirmezAchat");
 envoiPanier.addEventListener('click', (e) =>{
@@ -124,6 +124,10 @@ envoiPanier.addEventListener('click', (e) =>{
     let adresseLivraisonForm = document.getElementById("adresseLivraison").value;
     let villeForm = document.getElementById("ville").value;
 
+
+    // a ajouter au plan de test pour chaque oubli de remplissage de champ , email oubli + email non valide
+
+
     let contact = {
       firstName : nomForm,
       lastName : prenomForm,
@@ -161,11 +165,11 @@ envoiPanier.addEventListener('click', (e) =>{
     })
 
     .then(function(value) {
-      console.log(value);
-      // creation d'un nouveau storage avec le contenu de value
+      console.log(value); // a ajouter au plan de test
 
+      // creation d'un nouveau storage avec le contenu de value
       localStorage.removeItem("mesAchats");
-      localStorage.setItem("mesAchats", JSON.stringify(value));
+      localStorage.setItem("mesAchats", JSON.stringify(value)); // a ajouter au plan de test
       // à recuperer dans la page confirmation, toutes les infos necessaires pour faire un message de confirmation
     })
     .catch(function(err) {
