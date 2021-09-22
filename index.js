@@ -33,10 +33,5 @@ fetch("http://localhost:3000/api/teddies")
   })
      // en cas d'erreur
   .catch(function(err) {
-      // Une erreur est survenue
+    console.log(err);
   });
-
-  //Exemple pour récupérer l'id en Javascript : 
-  //let url = new URL(window.location);
-  //let params = new URLSSearchParams(url.search);
-  //let id = params.get('id');

@@ -65,3 +65,5 @@ let newPrice = document.createElement("span");
 newPrice.innerHTML = ""+ prixTotal +" €";
 let Prix = document.getElementById("prixTotal");
 Prix.appendChild(newPrice);
+
+localStorage.removeItem("monPanier");

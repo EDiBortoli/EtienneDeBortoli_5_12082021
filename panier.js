@@ -48,11 +48,19 @@ let lignePanier = document.getElementById('recap');
 // on rajoute le nouvel élément créé à la div lignePanier
 lignePanier.appendChild(newLigne);
 
-
+// TEST Bord du champs de formulaire coloré si bien rempli ou pas bien rempli
 //let nameOK = document.getElementById("name");
         //nameOK.addEventListener('change', (event) => {
          // nameOK.classList.add("is-valid");
           //});
+
+// Creation d'un bouton vider le panier et rechargement de la page actuelle
+let viderPanier = document.getElementById("viderPanier");
+viderPanier.addEventListener('click', (e) => {
+  localStorage.clear();
+  document.location.reload();
+});
+
 
 let envoiPanier = document.getElementById("confirmezAchat");
 envoiPanier.addEventListener('click', (e) =>{
