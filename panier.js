@@ -22,11 +22,6 @@ for (let ligne of panier) {
     <td>" + ligne.couleurProduit +"</td>\
     <td>" + ligne.prixProduit + " Euros</td>\
     <td>" + ligne.quantiteProduit +"</td>\
-    <td>\
-    <div class=\"form-check\">\
-    <input class=\"form-check-input\" type=\"checkbox\" value=\"\" id=\"checkBox\">\
-    </div>\
-    </td>\
     </tr>";
 };
 //On crée un élément div

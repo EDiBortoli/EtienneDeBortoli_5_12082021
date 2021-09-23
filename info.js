@@ -29,20 +29,20 @@ fetch("http://localhost:3000/api/teddies/"+id)
             <h4 class=\"card-title\">"+ infos.name +"</h4>\
             <p class=\"card-text\"><strong>Description :</strong>"+ infos.description +"</p>\
             <p><strong>Prix :</strong> "+ infos.price +" euros</p>\
-            <form class=\"my-0 pb-4 col-md-6 col-lg-5\">\
+            <form name=\"infosForm\" class=\"my-0 pb-4 col-md-6 col-lg-5\">\
             <fieldset>\
             <div class=\"form-group\">\
             <label for=\"selectColor\" class=\"form-label mt-4\">Couleur :</label>\
-            <select class=\"form-select couleur\" id=\"selectColor\" onchange=\"\"><option>Sélectionnez une couleur</option>" + options +
+            <select class=\"form-select couleur\" id=\"selectColor\" name=\"selectColor\" onchange=\"\"><option>Sélectionnez une couleur</option>" + options +
             "</select>\
             </div>\
             <div class=\"form-group\">\
             <label for=\"quantite\" class=\"form-label mt-4\">Quantité :</label>\
-            <input type=\"number\" class=\"form-control\" id=\"quantite\" placeholder=\"Choisissez combien vous en voulez\">\
+            <input type=\"number\" min=\"1\" class=\"form-control\" id=\"quantite\" name=\"quantite\" placeholder=\"Choisissez combien vous en voulez\">\
             </div>\
             </fieldset>\
             </form>\
-            <a class=\"lienPanier btn btn-info\" id=\"ajouterAuPanier\" href=\"panier.html\">Ajouter au panier</a>\
+            <a class=\"lienPanier btn btn-info\" id=\"ajouterAuPanier\">Ajouter au panier</a>\
             </div>\
             </div>\
             </div>\
@@ -91,14 +91,32 @@ fetch("http://localhost:3000/api/teddies/"+id)
     let ajoutPanier = document.getElementById("ajouterAuPanier");
     ajoutPanier.addEventListener('click', (e) =>{
         function validation(){
-         // déclarer la fonction validation
+         // déclaration de la fonction validation des champs de choix de couleur et de quantité avant l'envoi du panier vers le localstorage
+            var couleur = document.forms["infosForm"]["selectColor"]; 
+            var quantite = document.forms["infosForm"]["quantite"];
+            //let regQuantite = new RegExp("^[0-9]{4}$");
+            //let testQuantite = regQuantite.test(quantite.value);
+
+            if (couleur.value == "Sélectionnez une couleur"){
+                alert("Choisissez votre couleur");
+                couleur.focus(); 
+                return false;
+            }
+            if (quantite.value == ""){
+                alert("Choisissez votre quantité");
+                quantite.focus(); 
+                return false;
+            }
+            return true;
         }
 
-        if validation(){ 
+        if (validation()){ 
         monPanier.push(choixProduit);
         localStorage.setItem("monPanier", JSON.stringify(monPanier));
-    }
-    })
+        let ajoutAttribut = document.getElementById("ajouterAuPanier")
+        ajoutAttribut.setAttribute("href","panier.html");
+        }
+    });
 
     // à ajouter pour savoir si on a bien récupéré dans le local storage, on stocke bien les infos de l'ours, et vérifier que les différents ours que l'on a séléectionné s'accumulent bien
 
