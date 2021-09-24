@@ -94,8 +94,6 @@ fetch("http://localhost:3000/api/teddies/"+id)
          // déclaration de la fonction validation des champs de choix de couleur et de quantité avant l'envoi du panier vers le localstorage
             var couleur = document.forms["infosForm"]["selectColor"]; 
             var quantite = document.forms["infosForm"]["quantite"];
-            //let regQuantite = new RegExp("^[0-9]{4}$");
-            //let testQuantite = regQuantite.test(quantite.value);
 
             if (couleur.value == "Sélectionnez une couleur"){
                 alert("Choisissez votre couleur");
