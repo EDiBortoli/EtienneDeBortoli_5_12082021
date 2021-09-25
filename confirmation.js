@@ -1,6 +1,6 @@
-// récupération du contenu du local storage et stockage dans variable mesAchats
+// récupération du contenu du local storage et stockage dans variable mesInfos
 
-let achats = JSON.parse(localStorage.getItem("mesAchats")); // a ajouter au plan de test
+let achats = JSON.parse(localStorage.getItem("mesInfos")); // a ajouter au plan de test
 
 console.log(achats);
 
@@ -47,7 +47,7 @@ for (let infos of articles) {
     </div>";
 
     // Calcul du prix total des achats
-    prixTotal = Number(prixTotal) + Number(infos.prixProduit);
+    prixTotal = Number(prixTotal) + Number(infos.prixProduit) * Number(infos.quantiteProduit);
 };
 
 //On crée un élément div

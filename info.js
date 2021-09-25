@@ -1,7 +1,7 @@
 let url = new URL(window.location);
 let params = url.searchParams;
 let id = params.get('id');
-console.log(id); // à ajouter au plan de test
+console.log(id); 
 
 fetch("http://localhost:3000/api/teddies/"+id) 
 
@@ -14,7 +14,7 @@ fetch("http://localhost:3000/api/teddies/"+id)
 .then(function(infos) {
     let newInfos = document.createElement("div");
     let options = "";
-    console.log(infos); // a ajouter au test
+    console.log(infos); 
     for (let color of infos.colors){
     options = options + "<option value=\""+ color +"\">"+ color +"</option>";
     }
@@ -48,7 +48,6 @@ fetch("http://localhost:3000/api/teddies/"+id)
             </div>\
             </div>\
             </div>"; 
-    // dans la page verifier que l'afgfichage correspond bien aux données récolteé
 
     let infoOurs = document.getElementById('infoOurs');
     // on rajoute le nouvel élément créé à la div infoOurs
@@ -70,15 +69,18 @@ fetch("http://localhost:3000/api/teddies/"+id)
 
     choixCouleur.addEventListener('change', (event) => {
     choixProduit.couleurProduit = choixCouleur.options[choixCouleur.selectedIndex].value;
-    console.log(choixProduit);
+    console.log(choixCouleur.options[choixCouleur.selectedIndex].value);
     });
 
     let quantiteProduit = document.getElementById("quantite");
     
     quantiteProduit.addEventListener('change', (event) => {
         choixProduit.quantiteProduit = quantiteProduit.value;
-        console.log(choixProduit);
+        console.log(quantiteProduit.value);
         });
+
+    console.log(choixProduit);
+
 
 // ---------------------------------- LOCAL STORAGE ----------------------------------------
 
@@ -115,8 +117,6 @@ fetch("http://localhost:3000/api/teddies/"+id)
         ajoutAttribut.setAttribute("href","panier.html");
         }
     });
-
-    // à ajouter pour savoir si on a bien récupéré dans le local storage, on stocke bien les infos de l'ours, et vérifier que les différents ours que l'on a séléectionné s'accumulent bien
 
 })
 

@@ -1,5 +1,5 @@
 
-// récupération du contenu du local storage et stockage dans variable monPanier
+// récupération du contenu du local storage et stockage dans variable panier
 
 let panier = JSON.parse(localStorage.getItem("monPanier"));
     if (! panier){
@@ -7,7 +7,7 @@ let panier = JSON.parse(localStorage.getItem("monPanier"));
     }
 
 // Visualisation du contenu de "panier"
-console.log(panier); // a ajouter au plan de test
+console.log(panier); 
 
 // Création variable ligne du tableau des produits du panier
 let tableRow = "";
@@ -42,18 +42,12 @@ newLigne.innerHTML = "<table class=\"table table-hover\">\
 let lignePanier = document.getElementById('recap');
 // on rajoute le nouvel élément créé à la div lignePanier
 lignePanier.appendChild(newLigne); 
-// a ajouter au plan de test, vérifier à l'affichage
 
-// TEST Bord du champs de formulaire coloré si bien rempli ou pas bien rempli
-//let nameOK = document.getElementById("name");
-        //nameOK.addEventListener('change', (event) => {
-         // nameOK.classList.add("is-valid");
-          //});
 
 // Creation d'un bouton vider le panier et rechargement de la page actuelle
 let viderPanier = document.getElementById("viderPanier");
 viderPanier.addEventListener('click', (e) => {
-  localStorage.clear();
+  localStorage.removeItem("monPanier");
   document.location.reload();
 });
 
@@ -72,37 +66,37 @@ envoiPanier.addEventListener('click', (e) =>{
 
       if (nom.value == "")                                  
       { 
-          alert("Mettez votre nom."); 
+          alert("Indiquez votre nom."); 
           nom.focus(); 
           return false; 
       }
       if (prenom.value == "")                                  
       { 
-          alert("Mettez votre prénom."); 
+          alert("Indiquez votre prénom."); 
           prenom.focus(); 
           return false; 
       }  
       if (adresse.value == "")                               
       { 
-          alert("Mettez votre adresse."); 
+          alert("Indiquez votre adresse."); 
           adresse.focus(); 
           return false; 
       }        
       if (email.value == "")                                   
       { 
-          alert("Mettez une adresse email valide 1."); 
+          alert("Indiquez une adresse email."); 
           email.focus(); 
           return false; 
       }    
       if (testEmail)                
       { 
-          alert("Mettez une adresse email valide 2."); 
+          alert("Indiquez une adresse email valide."); 
           email.focus(); 
           return false; 
       }
       if (ville.value == "")                  
       { 
-          alert("Mettez votre ville."); 
+          alert("Indiquez votre ville."); 
           ville.focus(); 
           return false; 
       } 
@@ -111,7 +105,6 @@ envoiPanier.addEventListener('click', (e) =>{
   }
   // Appel de la fonction validation si true
   if (validation()){
-
     
     let nomForm = document.getElementById("nom").value;
     let prenomForm = document.getElementById("prenom").value;
@@ -119,10 +112,7 @@ envoiPanier.addEventListener('click', (e) =>{
     let adresseLivraisonForm = document.getElementById("adresseLivraison").value;
     let villeForm = document.getElementById("ville").value;
 
-
-    // a ajouter au plan de test pour chaque oubli de remplissage de champ , email oubli + email non valide
-
-
+    // création de la variable contact contenant les informations du formulaire rempli par l'utilisateur avec les noms de variables corrects pour envoi vers le serveur
     let contact = {
       firstName : nomForm,
       lastName : prenomForm,
@@ -131,19 +121,20 @@ envoiPanier.addEventListener('click', (e) =>{
       city : villeForm
     }
 
+    //console.log(JSON.stringify(contact));
+
     let productList = [];
     for(let ours of panier){
       productList.push(ours.productId);
     }
 
-    console.log(JSON.stringify(contact));
     let jsonBody = {
       contact : contact,
       products : productList,
       detail : panier
     }
 
-    console.log(JSON.stringify(jsonBody));
+    //console.log(JSON.stringify(jsonBody));
 
     fetch("http://localhost:3000/api/teddies/order", {
       method: "POST",
@@ -160,11 +151,11 @@ envoiPanier.addEventListener('click', (e) =>{
     })
 
     .then(function(value) {
-      console.log(value); // a ajouter au plan de test
+      console.log(value);
 
       // creation d'un nouveau storage avec le contenu de value
-      localStorage.removeItem("mesAchats");
-      localStorage.setItem("mesAchats", JSON.stringify(value)); // a ajouter au plan de test
+      localStorage.removeItem("mesInfos");
+      localStorage.setItem("mesInfos", JSON.stringify(value));
       // à recuperer dans la page confirmation, toutes les infos necessaires pour faire un message de confirmation
     })
     .catch(function(err) {
