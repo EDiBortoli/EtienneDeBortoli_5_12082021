@@ -1,3 +1,4 @@
+// récupération de l'id 
 let url = new URL(window.location);
 let params = url.searchParams;
 let id = params.get('id');

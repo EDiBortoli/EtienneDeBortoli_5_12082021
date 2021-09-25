@@ -2,9 +2,9 @@
 // récupération du contenu du local storage et stockage dans variable panier
 
 let panier = JSON.parse(localStorage.getItem("monPanier"));
-    if (! panier){
-        panier = [];
-    }
+if (! panier){
+    panier = [];
+}
 
 // Visualisation du contenu de "panier"
 console.log(panier); 
@@ -156,7 +156,6 @@ envoiPanier.addEventListener('click', (e) =>{
       // creation d'un nouveau storage avec le contenu de value
       localStorage.removeItem("mesInfos");
       localStorage.setItem("mesInfos", JSON.stringify(value));
-      // à recuperer dans la page confirmation, toutes les infos necessaires pour faire un message de confirmation
     })
     .catch(function(err) {
       // Une erreur est survenue
