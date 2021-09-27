@@ -6,7 +6,7 @@ fetch("http://localhost:3000/api/teddies")
     return res.json();
   }
 })
-    // on exploite les données : une boucle pour créer les éléments html pour chaque ours
+// on exploite les données : une boucle pour créer les éléments html pour chaque ours
 .then(function(value) {
   for (let infos of value) {
       console.log(value);
@@ -32,7 +32,7 @@ fetch("http://localhost:3000/api/teddies")
       ligneOurs.appendChild(newElt);
   }
 })
-    // en cas d'erreur
+// en cas d'erreur
 .catch(function(err) {
   console.log(err);
 });

@@ -61,7 +61,7 @@ envoiPanier.addEventListener('click', (e) =>{
       var email = document.forms["contactForm"]["email"];     
       var adresse = document.forms["contactForm"]["adresse"];  
       var ville = document.forms["contactForm"]["ville"]; 
-      let regMail = new RegExp("^[A-Za-z][0-9A-Za-z-_\.]+@[0-9A-Za-z-_\.]+\.[A-Za-z]{2,}$","g");
+      let regMail = new RegExp("^[A-Za-z][0-9A-Za-z-_\.]+@[0-9A-Za-z-_\.]+\.[.][A-Za-z]{2,}$","g");
       let testEmail = !regMail.test(email.value);
 
       if (nom.value == "")                                  
